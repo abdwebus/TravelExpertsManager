@@ -17,6 +17,28 @@ namespace BusinessLayer
             Console.WriteLine(connection.ToString());
             connection.Close();
         }
+        public static List<Package> GetPackages()
+        {
+            List<Package> packages = new List<Package>();
+            string sql = "SELECT PackageId, PkgName ,PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, PkgAgencyCommission FROM Packages";
+            DataRowCollection rows = DB.getRows(sql);
+            foreach (DataRow row in rows)
+            {
+                Package package = new Package
+                {
+                    PackageId = Convert.ToInt32(row["PackageId"]),
+                    PkgName = row["PkgName"].ToString(),
+                    PkgStartDate = Convert.ToDateTime(row["PkgStartDate"]),
+                    PkgEndDate = Convert.ToDateTime(row["PkgEndDate"]),
+                    PkgDesc = row["PkgDesc"].ToString(),
+                    PkgBasePrice = Convert.ToDecimal(row["PkgBasePrice"]),
+                    PkgAgencyCommission = Convert.ToDecimal(row["PkgAgencyCommission"])
+                };
+
+                packages.Add(package);
+            }
+            return packages;
+        }
 
         public static List<Supplier> GetSuppliers() {
 
@@ -43,12 +65,6 @@ namespace BusinessLayer
         {
 
             return new Product();
-        }
-
-        public static List<Package> GetPackages()
-        {
-
-            return new List<Package>();
         }
 
         public static bool UpdatePackage(Package package) {
@@ -85,35 +101,6 @@ namespace BusinessLayer
             return true;
         }
 
-
-
-        public static List<Order> getOrders()
-        {
-            List<Order> orders = new List<Order>();
-            string sql = "SELECT o.OrderID, o.CustomerID, CONVERT(date, o.OrderDate) as OrderDate, CONVERT(date, o.RequiredDate) as RequiredDate, CONVERT(date, o.ShippedDate) as ShippedDate, ";
-            sql += "od.ProductID, od.UnitPrice, od.Quantity, od.Discount, (od.UnitPrice * od.Quantity * (1 - od.Discount)) as OrderTotal ";
-            sql += "FROM Orders as o ";
-            sql += "JOIN [Order Details] as od ON o.OrderID = od.OrderID";
-            DataRowCollection rows = DB.getRows(sql);
-            foreach (DataRow row in rows)
-            {
-                Order order = new Order
-                {
-                    //OrderID = Convert.ToInt32(row["OrderID"]),
-                    //CustomerID = row["CustomerID"].ToString(),
-                    //OrderDate = getValue(row, "OrderDate"),
-                    //RequiredDate = getValue(row, "RequiredDate"),
-                    //ShippedDate = getValue(row, "ShippedDate"),
-                    //ProductID = Convert.ToInt32(row["ProductID"]),
-                    //UnitPrice = Convert.ToDecimal(row["UnitPrice"]),
-                    //Quantity = Convert.ToInt32(row["Quantity"]),
-                    //Discount = Convert.ToDecimal(row["Discount"]),
-                    //OrderTotal = Convert.ToDecimal(row["OrderTotal"])
-                };
-                orders.Add(order);
-            }
-            return orders;
-        }
 
         public static bool updateShippedDate(int orderID, DateTime date)
         {
