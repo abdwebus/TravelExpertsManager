@@ -67,19 +67,19 @@ namespace BusinessLayer
             return true;
         }
 
-        public static bool InsertPackage(string supName)
+        public static bool InsertPackage()
         {
 
             return true;
         }
 
-        public static bool InsertSupplier(string prodName, int supplierId)
+        public static bool InsertSupplier(string supName)
         {
 
             return true;
         }
 
-        public static bool InsertProduct(Product product)
+        public static bool InsertProduct(string prodName, int supplierId)
         {
 
             return true;
