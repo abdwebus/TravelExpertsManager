@@ -11,7 +11,7 @@ namespace DataLayer
 {
     public static class DB
     {
-        public static SqlConnection getConnection()
+        private static SqlConnection getConnection()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["SQLServer"].ConnectionString;
             SqlConnection connection = new SqlConnection(connectionString);

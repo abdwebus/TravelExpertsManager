@@ -11,33 +11,55 @@ namespace BusinessLayer
 {
     public class Operations
     {
-        public static void testConnection()
-        {
-            SqlConnection connection = DB.getConnection();
-            Console.WriteLine(connection.ToString());
-            connection.Close();
-        }
         public static List<Package> GetPackages()
         {
             List<Package> packages = new List<Package>();
-            string sql = "SELECT PackageId, PkgName ,PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, PkgAgencyCommission FROM Packages";
-            DataRowCollection rows = DB.getRows(sql);
-            foreach (DataRow row in rows)
+            string packageSql = "SELECT PackageId, PkgName ,PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, PkgAgencyCommission FROM Packages";
+            DataRowCollection packageRows = DB.getRows(packageSql);
+            foreach (DataRow packageRow in packageRows)
             {
                 Package package = new Package
                 {
-                    PackageId = Convert.ToInt32(row["PackageId"]),
-                    PkgName = row["PkgName"].ToString(),
-                    PkgStartDate = Convert.ToDateTime(row["PkgStartDate"]),
-                    PkgEndDate = Convert.ToDateTime(row["PkgEndDate"]),
-                    PkgDesc = row["PkgDesc"].ToString(),
-                    PkgBasePrice = Convert.ToDecimal(row["PkgBasePrice"]),
-                    PkgAgencyCommission = Convert.ToDecimal(row["PkgAgencyCommission"])
+                    PackageId = Convert.ToInt32(packageRow["PackageId"]),
+                    PkgName = packageRow["PkgName"].ToString(),
+                    PkgStartDate = Convert.ToDateTime(packageRow["PkgStartDate"]),
+                    PkgEndDate = Convert.ToDateTime(packageRow["PkgEndDate"]),
+                    PkgDesc = packageRow["PkgDesc"].ToString(),
+                    PkgBasePrice = Convert.ToDecimal(packageRow["PkgBasePrice"]),
+                    PkgAgencyCommission = Convert.ToDecimal(packageRow["PkgAgencyCommission"])
                 };
-
+                package.Products = GetProductsForPackage(package.PackageId);
                 packages.Add(package);
             }
             return packages;
+        }
+
+        private static List<Product> GetProductsForPackage(int packageId) {
+            List<Product> products = new List<Product>(); 
+            string productSql = "select p.ProductId, p.ProdName, s.SupplierId, s.SupName ";
+            productSql += "from Packages_Products_Suppliers pps ";
+            productSql += "JOIN Products_Suppliers ps on pps.ProductSupplierId = ps.ProductSupplierId ";
+            productSql += "JOIN Products p on p.ProductId = ps.ProductId ";
+            productSql += "JOIN Suppliers s on s.SupplierId = ps.SupplierId ";
+            productSql += "where PackageId = " + packageId;
+            DataRowCollection productRows = DB.getRows(productSql);
+            foreach (DataRow productRow in productRows)
+            {
+                Supplier supplier = new Supplier
+                {
+                    SupplierId = Convert.ToInt32(productRow["SupplierId"]),
+                    SupName = productRow["SupName"].ToString()
+                };
+
+                Product product = new Product
+                {
+                    ProductId = Convert.ToInt32(productRow["ProductId"]),
+                    ProdName = productRow["ProdName"].ToString(),
+                    Supplier = supplier
+                };
+                products.Add(product);
+            }
+            return products;
         }
 
         public static List<Supplier> GetSuppliers() {

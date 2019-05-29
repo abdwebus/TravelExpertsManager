@@ -1,6 +1,6 @@
 ﻿namespace TravelExpertsManager
 {
-    partial class Form1
+    partial class PackagesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
+            this.cbPackages = new System.Windows.Forms.ComboBox();
+            this.lbProducts = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -40,13 +42,32 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             // 
-            // Form1
+            // cbPackages
+            // 
+            this.cbPackages.FormattingEnabled = true;
+            this.cbPackages.Location = new System.Drawing.Point(57, 29);
+            this.cbPackages.Name = "cbPackages";
+            this.cbPackages.Size = new System.Drawing.Size(121, 21);
+            this.cbPackages.TabIndex = 1;
+            this.cbPackages.SelectedIndexChanged += new System.EventHandler(this.cbPackages_SelectedIndexChanged);
+            // 
+            // lbProducts
+            // 
+            this.lbProducts.FormattingEnabled = true;
+            this.lbProducts.Location = new System.Drawing.Point(240, 29);
+            this.lbProducts.Name = "lbProducts";
+            this.lbProducts.Size = new System.Drawing.Size(344, 95);
+            this.lbProducts.TabIndex = 2;
+            // 
+            // PackagesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbProducts);
+            this.Controls.Add(this.cbPackages);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "PackagesForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -57,6 +78,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbPackages;
+        private System.Windows.Forms.ListBox lbProducts;
     }
 }
 
