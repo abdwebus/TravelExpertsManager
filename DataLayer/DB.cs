@@ -36,5 +36,12 @@ namespace DataLayer
             command.Connection = connection;
             return command.ExecuteNonQuery() > 0;
         }
+
+        public static int insertRow(SqlCommand command)
+        {
+            SqlConnection connection = getConnection();
+            command.Connection = connection;
+            return Convert.ToInt32(command.ExecuteScalar());
+        }
     }
 }

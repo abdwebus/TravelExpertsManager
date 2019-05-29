@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddPackageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPackageForm.Designer.cs">
+      <DependentUpon>AddPackageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddProductToPackageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddProductToPackageForm.Designer.cs">
+      <DependentUpon>AddProductToPackageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PackagesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +72,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddPackageForm.resx">
+      <DependentUpon>AddPackageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddProductToPackageForm.resx">
+      <DependentUpon>AddProductToPackageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PackagesForm.resx">
       <DependentUpon>PackagesForm.cs</DependentUpon>
     </EmbeddedResource>
