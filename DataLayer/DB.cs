@@ -11,7 +11,7 @@ namespace DataLayer
 {
     public static class DB
     {
-        public static SqlConnection getConnection()
+        private static SqlConnection getConnection()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["SQLServer"].ConnectionString;
             SqlConnection connection = new SqlConnection(connectionString);
@@ -44,7 +44,12 @@ namespace DataLayer
             return (int)command.ExecuteScalar();
 
         }
-       
 
+        public static int insertRow(SqlCommand command)
+        {
+            SqlConnection connection = getConnection();
+            command.Connection = connection;
+            return Convert.ToInt32(command.ExecuteScalar());
+        }
     }
 }
