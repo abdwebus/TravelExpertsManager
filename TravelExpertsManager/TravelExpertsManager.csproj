@@ -46,6 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddPackageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPackageForm.Designer.cs">
+      <DependentUpon>AddPackageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddProductToPackageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddProductToPackageForm.Designer.cs">
+      <DependentUpon>AddProductToPackageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DashboardForm.Designer.cs">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PackagesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackagesForm.Designer.cs">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +78,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddPackageForm.resx">
+      <DependentUpon>AddPackageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddProductToPackageForm.resx">
+      <DependentUpon>AddProductToPackageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DashboardForm.resx">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackagesForm.resx">
+      <DependentUpon>PackagesForm.cs</DependentUpon>
     <Compile Include="UpdateProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,11 +100,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
@@ -111,6 +151,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\jay4.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Add32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

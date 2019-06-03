@@ -10,5 +10,6 @@ namespace BusinessLayer
     {
         public int SupplierId { get; set; }
         public string SupName { get; set; }
+        public List<Product> Products { get; set; }
     }
 }

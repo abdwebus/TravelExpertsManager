@@ -17,9 +17,4 @@ namespace BusinessLayer
         public decimal PkgAgencyCommission { get; set; }
         public List<Product> Products { get; set; }
     }
-
-    public class Order
-    {
-
-    }
 }
