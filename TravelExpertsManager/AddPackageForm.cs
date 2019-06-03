@@ -29,5 +29,13 @@ namespace TravelExpertsManager
             bool result = Operations.InsertPackage(name, startDate, endDate, description, price, commision);
             MessageBox.Show(result.ToString());
         }
+
+        private void txtName_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtName.Text == "") {
+                errName.SetError(txtName, "Invalid name");
+                e.Cancel = true;
+            }
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace TravelExpertsManager
             lbProducts.Items.Clear();
             foreach (Product product in packages[cbPackages.SelectedIndex].Products)
             {
-                lbProducts.Items.Add(product.ProdName + "-" + product.Supplier.SupName);
+                lbProducts.Items.Add(product.ProdName + " - " + product.Supplier.SupName);
             }
         }
 

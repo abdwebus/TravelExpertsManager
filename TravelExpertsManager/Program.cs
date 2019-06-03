@@ -16,7 +16,7 @@ namespace TravelExpertsManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PackagesForm());
+            Application.Run(new DashboardForm());
         }
     }
 }
