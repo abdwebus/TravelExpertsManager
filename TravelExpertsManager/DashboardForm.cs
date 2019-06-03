@@ -33,5 +33,11 @@ namespace TravelExpertsManager
             ProductsForm frm = new ProductsForm();
             frm.ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Suppliers frm = new Suppliers();
+            frm.ShowDialog();
+        }
     }
 }
