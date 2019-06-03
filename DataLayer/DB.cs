@@ -34,7 +34,17 @@ namespace DataLayer
         {
             SqlConnection connection = getConnection();
             command.Connection = connection;
-            return command.ExecuteNonQuery() > 0;
+              return command.ExecuteNonQuery() > 0;
+            // return command.ExecuteNonQuery() > 0;
         }
+        public static int DoScalar(SqlCommand command)
+        {
+            SqlConnection connection = getConnection();
+            command.Connection = connection;
+            return (int)command.ExecuteScalar();
+
+        }
+       
+
     }
 }

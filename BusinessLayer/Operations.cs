@@ -19,8 +19,22 @@ namespace BusinessLayer
         }
 
         public static List<Supplier> GetSuppliers() {
+            
+            List<Supplier> suppliers = new List<Supplier>();
+            string sql = "SELECT SupplierID, SupName FROM Suppliers";
+            DataRowCollection rows = DB.getRows(sql);
 
-            return new List<Supplier>();
+            foreach(DataRow row in rows)
+            {
+                Supplier supplier = new Supplier
+                {
+                    SupplierId = Convert.ToInt32(row["SupplierId"]),
+                    SupName = row["SupName"].ToString()
+
+                };
+                suppliers.Add(supplier);
+            }
+            return suppliers;              
         }
 
         public static List<Product> GetProducts() {
@@ -35,6 +49,8 @@ namespace BusinessLayer
 
         public static Supplier GetSupplier(int supplierId)
         {
+            Supplier p = new Supplier();
+            string sql = "SELECT SupplierId, SupName FROM Suppliers WHERE ID =" + supplierId;
 
             return new Supplier();
         }
@@ -58,7 +74,14 @@ namespace BusinessLayer
 
         public static bool UpdateSupplier(int supplierId, string supName) {
 
-            return true;
+            string sql = "UPDATE Suppliers SET  SupName = @SupName WHERE SupplierId = @SupplierId";
+            SqlCommand command = new SqlCommand(sql);
+            command.Parameters.AddWithValue("@SupplierId", supplierId);
+            command.Parameters.AddWithValue("@SupName", supName);
+            return DB.updateRow(command);
+
+
+            //return true;
         }
 
         public static bool UpdateProduct(int productId, string prodName, int supplierId)
@@ -73,10 +96,22 @@ namespace BusinessLayer
             return true;
         }
 
-        public static bool InsertSupplier(string prodName, int supplierId)
+        public static bool InsertSupplier(int SupplierID, string supName)
         {
+            //get current maximum id, so I can add 1 later
+            string getmax = "SELECT MAX(SupplierId) FROM Suppliers";
+            SqlCommand max = new SqlCommand(getmax);
+            int maxid;
+            maxid = DB.DoScalar(max);
 
-            return true;
+
+            string sql = "INSERT into Suppliers (SupplierId, SupName) values ( @supplierId,@supName)";
+            SqlCommand command = new SqlCommand(sql);
+            command.Parameters.AddWithValue("@supplierId", maxid + 1);//add 1 so the new ID is quaranteed to be unique ()
+            command.Parameters.AddWithValue("@supName", supName);
+            return DB.updateRow(command);
+           
+           
         }
 
         public static bool InsertProduct(Product product)
