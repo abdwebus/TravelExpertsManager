@@ -125,6 +125,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "UpdateProduct";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "UpdateProduct";
             this.Load += new System.EventHandler(this.UpdateProduct__Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -89,6 +89,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PackagesForm.resx">
       <DependentUpon>PackagesForm.cs</DependentUpon>
+    </EmbeddedResource> <!--Added this --> 
     <Compile Include="UpdateProduct.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -27,5 +27,11 @@ namespace TravelExpertsManager
             PackagesForm frm = new PackagesForm();
             frm.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ProductsForm frm = new ProductsForm();
+            frm.ShowDialog();
+        }
     }
 }

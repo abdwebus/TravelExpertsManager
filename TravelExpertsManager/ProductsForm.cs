@@ -76,7 +76,7 @@ namespace TravelExpertsManager
         private void edtBtn_Click(object sender, EventArgs e)
         {
             UpdateProduct pf = new UpdateProduct();
-            pf.Show();
+            pf.ShowDialog();
         }
     }
 }
