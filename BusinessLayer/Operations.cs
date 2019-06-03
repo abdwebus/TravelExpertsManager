@@ -41,13 +41,24 @@ namespace BusinessLayer
         }
 
         public static List<Supplier> GetSuppliers() {
-
+          
             return new List<Supplier>();
         }
 
         public static List<Product> GetProducts() {
+            List<Product> ProductList = new List<Product>();
+            string sql = "select ProdName from Products order by ProdName ; ";
+            DataRowCollection Rows = DB.getRows(sql);
 
-            return new List<Product>();
+            foreach(DataRow Row in Rows)
+            {
+                Product product = new Product()
+                {
+                    ProdName = Row["ProdName"].ToString(),
+                };
+               ProductList.Add(product);
+           }
+            return ProductList;
         }
 
         public static Package GetPackage(int packageId) {
@@ -77,10 +88,15 @@ namespace BusinessLayer
             return true;
         }
 
-        public static bool UpdateProduct(int productId, string prodName, int supplierId)
+        public static bool UpdateProduct(int productId, string prodName/*, int supplierId*/)
         {
+            string sql = " update Products set ProdName = (@ProdName) where ProductId = (@ProdID) ;";
+            SqlCommand command = new SqlCommand(sql);
+            command.Parameters.AddWithValue("@ProdName", prodName);
+            command.Parameters.AddWithValue("@ProdID", productId);
+            return DB.updateRow(command);
 
-            return true;
+          
         }
 
         public static bool InsertPackage()
@@ -97,10 +113,28 @@ namespace BusinessLayer
 
         public static bool InsertProduct(string prodName, int supplierId)
         {
-
-            return true;
+            string sql = " insert into Products (ProdName) values  (@ProdName) ";
+            SqlCommand command = new SqlCommand(sql);
+            command.Parameters.AddWithValue("@ProdName", prodName);
+            return DB.updateRow(command);
         }
+        public static List<Product> ShowProducts()
+        {
+            List<Product> ProductList = new List<Product>();
+            string sql = "  select * from Products;";
+            DataRowCollection Rows = DB.getRows(sql);
 
+            foreach (DataRow Row in Rows)
+            {
+                Product product = new Product()
+                {
+                    ProdName = Row["ProdName"].ToString(),
+                    ProductId =Convert.ToInt32(Row["ProductID"].ToString()),
+                };
+                ProductList.Add(product);
+            }
+            return ProductList;
+        }
 
         public static bool updateShippedDate(int orderID, DateTime date)
         {
