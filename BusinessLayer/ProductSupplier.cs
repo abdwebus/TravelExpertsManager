@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
+    //Author: Abdulwahab Alansari
     public class ProductSupplier
     {
         public Product product { get; set; }

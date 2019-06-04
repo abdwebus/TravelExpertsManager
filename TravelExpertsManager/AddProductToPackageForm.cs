@@ -11,6 +11,7 @@ using BusinessLayer;
 
 namespace TravelExpertsManager
 {
+    //Author: Abdulwahab Alansari
     public partial class AddProductToPackageForm : Form
     {
         public int PackageID { get; set; }

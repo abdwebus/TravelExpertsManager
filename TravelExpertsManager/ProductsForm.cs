@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BusinessLayer;
 namespace TravelExpertsManager
 {
+    //Author: Amin Aden
     public partial class ProductsForm : Form
     {
         List<Product> products = Operations.GetProducts();

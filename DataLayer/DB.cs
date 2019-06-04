@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataLayer
 {
+    //Author: Abdulwahab Alansari
     public static class DB
     {
         private static SqlConnection getConnection()
