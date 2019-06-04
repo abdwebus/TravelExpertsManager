@@ -153,7 +153,8 @@ namespace BusinessLayer
         }
 
         public static List<Supplier> GetSuppliers() {
-            
+            // allows to get all suppliers table fields 
+            // this was done by Mustafa Warsama
             List<Supplier> suppliers = new List<Supplier>();
             string sql = "SELECT SupplierID, SupName FROM Suppliers";
             DataRowCollection rows = DB.getRows(sql);
@@ -221,6 +222,7 @@ namespace BusinessLayer
 
         public static Supplier GetSupplier(int supplierId)
         {
+            //this part shows data that is selected from database on the datagridview 
             Supplier p = new Supplier();
             string sql = "SELECT SupplierId, SupName FROM Suppliers WHERE ID =" + supplierId;
 
@@ -239,7 +241,8 @@ namespace BusinessLayer
         }
 
         public static bool UpdateSupplier(int supplierId, string supName) {
-
+            // this is the query and specific filed to preform an update operation  
+            // this was done by Mustafa Warsama                    
             string sql = "UPDATE Suppliers SET  SupName = @SupName WHERE SupplierId = @SupplierId";
             SqlCommand command = new SqlCommand(sql);
             command.Parameters.AddWithValue("@SupplierId", supplierId);
@@ -288,6 +291,8 @@ namespace BusinessLayer
 
         public static bool InsertSupplier(int SupplierID, string supName)
         {
+            //this part add supplier in to the database 
+            //this was done by Mustafa Warsama
             //get current maximum id, so I can add 1 later
             string getmax = "SELECT MAX(SupplierId) FROM Suppliers";
             SqlCommand max = new SqlCommand(getmax);

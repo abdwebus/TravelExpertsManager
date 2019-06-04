@@ -39,7 +39,9 @@ namespace DataLayer
         }
         public static int DoScalar(SqlCommand command)
         {
-            SqlConnection connection = getConnection();
+            // this allows the sql query for the max id to generate 
+            // this was done by Mustafa Warsama
+            SqlConnection connection = getConnection();  
             command.Connection = connection;
             return (int)command.ExecuteScalar();
 
