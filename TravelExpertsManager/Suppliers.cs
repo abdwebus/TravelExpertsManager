@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using BusinessLayer;
 
 namespace TravelExpertsManager
-{   
+{   //this page was done by Mustafa Warsama
     public partial class Suppliers : Form
     {   // list of Suppliers are mention in the begiin so all operations be able to access this list
         List<Supplier> suppliers = Operations.GetSuppliers();
@@ -18,6 +18,7 @@ namespace TravelExpertsManager
 
         public Suppliers()
         {
+            //made input field not visible so user select which field they want to use
             InitializeComponent();
             panel5.Visible = false;
             panel6.Visible = false;
@@ -37,43 +38,24 @@ namespace TravelExpertsManager
             // this code makes the datagridview column size to resize so that all the data to show up as page loads 
             dataGridView1.AutoResizeColumns();
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.AutoResizeRows(DataGridViewAutoSizeRowsMode.AllCells);
 
         }
 
 
-        private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-         }
-
-        private void Edit_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Add_Click(object sender, EventArgs e)
-        {
-            
-           
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
+       
 
         private void Add_Click_1(object sender, EventArgs e)
         {
             // this parts allows the operations of adding suppliers in to the data accord
-            
+            int SupplierID = 0;
             //int id = Convert.ToInt32(txtSupplierID.Text);
-           if (textBox1.Text != "")
-            {
-                
-                Operations.InsertSupplier(textBox1.Text);
-
+           if (AddSupName.Text != "")
+            {                
+                Operations.InsertSupplier(SupplierID, AddSupName.Text);
                 MessageBox.Show("Record Inserted Successfully");
-                
+                dataGridView1.DataSource = Operations.GetSuppliers();
+                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
             }
             else
             {
@@ -82,6 +64,7 @@ namespace TravelExpertsManager
            
         }
 
+
         private void Edit_Click_1(object sender, EventArgs e)
         {
             // this parts allows the operations of adding suppliers in to the data accord
@@ -89,11 +72,10 @@ namespace TravelExpertsManager
             //int id = Convert.ToInt32(txtSupplierID.Text);
             if (txtSupplierID.Text != "" && txtSupName.Text != "")
             {
-
                 Operations.UpdateSupplier(Convert.ToInt32(txtSupplierID.Text), txtSupName.Text);
-
                 MessageBox.Show("Record Inserted Successfully");
-
+                dataGridView1.DataSource = Operations.GetSuppliers();
+                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.RowCount - 1;
             }
             else
             {
@@ -122,18 +104,15 @@ namespace TravelExpertsManager
             if (!System.Text.RegularExpressions.Regex.IsMatch(txtSupName.Text, "^[a-zA-Z ]"))
                 {
                     MessageBox.Show("This Textbox Accepts Only Alphabetical Characters");
-                //txtSupName.Text.Remove(txtSupName.Text.Length - 1);
+               
                 }
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void button1_Click_1(object sender, EventArgs e)
         {
+            //this code displays the selected field 
             panel5.Visible = true;
             panel6.Visible = true;
             panel4.Visible = false;
@@ -142,10 +121,24 @@ namespace TravelExpertsManager
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //this code displays the selected field 
             panel5.Visible = false;
             panel6.Visible = false;
             panel4.Visible = true;
             panel8.Visible = true;
         }
+
+        private void AddSupName_TextChanged(object sender, EventArgs e)
+        {// this part makes validition for the suppliername txtbox, only string is allowed  
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(AddSupName.Text, "^[a-zA-Z ]"))
+            {
+                MessageBox.Show("This Textbox Accepts Only Alphabetical Characters");
+               
+            }
+
+        }
+
+       
     }
 }
