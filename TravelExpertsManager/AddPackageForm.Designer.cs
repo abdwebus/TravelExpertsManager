@@ -48,9 +48,9 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnAdd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SpringGreen;
-            this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SpringGreen;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.SeaGreen;
+            this.btnAdd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LimeGreen;
+            this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(16, 356);
@@ -86,7 +86,6 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(184, 26);
             this.txtName.TabIndex = 10;
-            this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
             // 
             // txtDescription
             // 
@@ -182,7 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(422, 440);
+            this.ClientSize = new System.Drawing.Size(429, 440);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);

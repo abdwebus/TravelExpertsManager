@@ -50,10 +50,11 @@
             // 
             this.lbProducts.Font = new System.Drawing.Font("Dubai", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbProducts.FormattingEnabled = true;
+            this.lbProducts.HorizontalScrollbar = true;
             this.lbProducts.ItemHeight = 32;
             this.lbProducts.Location = new System.Drawing.Point(215, 48);
             this.lbProducts.Name = "lbProducts";
-            this.lbProducts.Size = new System.Drawing.Size(344, 260);
+            this.lbProducts.Size = new System.Drawing.Size(459, 260);
             this.lbProducts.TabIndex = 2;
             // 
             // button1
@@ -65,7 +66,7 @@
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(12, 94);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 40);
+            this.button1.Size = new System.Drawing.Size(197, 40);
             this.button1.TabIndex = 4;
             this.button1.Text = "Add Package";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -81,7 +82,7 @@
             this.btnAddProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAddProduct.Location = new System.Drawing.Point(12, 140);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(143, 43);
+            this.btnAddProduct.Size = new System.Drawing.Size(197, 43);
             this.btnAddProduct.TabIndex = 3;
             this.btnAddProduct.Text = "Add Product";
             this.btnAddProduct.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -112,7 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 330);
+            this.ClientSize = new System.Drawing.Size(686, 330);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
