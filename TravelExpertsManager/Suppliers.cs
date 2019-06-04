@@ -14,10 +14,15 @@ namespace TravelExpertsManager
     public partial class Suppliers : Form
     {   // list of Suppliers are mention in the begiin so all operations be able to access this list
         List<Supplier> suppliers = Operations.GetSuppliers();
-        
+       
+
         public Suppliers()
         {
             InitializeComponent();
+            panel5.Visible = false;
+            panel6.Visible = false;
+            panel4.Visible = false;
+            panel8.Visible = false;
         }
 
         private void Suppliers_Load(object sender, EventArgs e)
@@ -62,10 +67,10 @@ namespace TravelExpertsManager
             // this parts allows the operations of adding suppliers in to the data accord
             
             //int id = Convert.ToInt32(txtSupplierID.Text);
-           if (txtSupplierID.Text != "" && txtSupName.Text != "")
+           if (textBox1.Text != "")
             {
                 
-                Operations.InsertSupplier(Convert.ToInt32(txtSupplierID.Text), txtSupName.Text);
+                Operations.InsertSupplier(textBox1.Text);
 
                 MessageBox.Show("Record Inserted Successfully");
                 
@@ -125,6 +130,22 @@ namespace TravelExpertsManager
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            panel5.Visible = true;
+            panel6.Visible = true;
+            panel4.Visible = false;
+            panel8.Visible = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel5.Visible = false;
+            panel6.Visible = false;
+            panel4.Visible = true;
+            panel8.Visible = true;
         }
     }
 }
